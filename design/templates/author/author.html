@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <a href="{% url 'add_book' %}" class="btn btn-warning">Add Book</a>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+               
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">email</th>
+                <th scope="col">phone</th>
+                <th scope="col">actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %} 
+            <tr>
+              
+                <td>{{author.firstname}}</td>
+                <td>{{author.lastname}}</td>
+                <td>{{author.email}}</td>
+                <td>{{author.phone}}</td>
+                <td>
+                        <a href="{% url 'update' pk=author.id %}" class="btn btn-primary"><i class="bi bi-pen"></i>Update</a>
+        
+                        <a href="{% url 'delete_author'  author.id %}" class="btn btn-danger"><i class="bi bi-trash3">delete</i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+    {% endblock content %}

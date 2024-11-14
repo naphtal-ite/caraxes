@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    {% for book in books %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header"><strong>
+                    {{ book.title}}
+                </strong>
+            </div>
+            <div class="card-body">
+
+
+
+                <p class="card-text">
+                    <strong>publisher: </strong>{{book.publisher}}</p>
+
+                <p class="card-text">
+                    <strong>synopsis: </strong>{{book.synopsis}}
+                </p>
+
+                <p class="card-text">
+                    <strong>content: </strong>{{book.content}}</p>
+
+
+                <p class="card-text">
+                    <strong>Create At: </strong>{{book.created_at}}</p>
+               <p><a href="{% url 'update_book' pk=book.pk %}" class="btn btn-success">update</a></p>
+                <a href="{% url 'delete_book' pk=book.pk %}" class="btn btn-danger">delete</a></p> 
+               
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <br /><br />
+</div>
+
+{% endblock %}
